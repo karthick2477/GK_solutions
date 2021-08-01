@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Style+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+/* .index_caption{
+    width: auto;
+    max-width: 45%;
+    height: auto;
+    margin-bottom: 140px;
+    left: 5%;
+    top: 13%;
+    text-align: left;
+} */
+/* .banner_text_left{
+width: 40%;
+border-left: 3px solid #ffbd11;
+position: absolute;
+padding-left: 5px;
+height: auto;
+top: 72%;
+} */
+
+* {
+    box-sizing: border-box;
+  }
+
+header,
+section {
+  overflow-x: hidden;
+}
+
+.card-text
+{
+    text-align:justify;
+}
+.section-4
+{
+    font-family: 'Gowun Dodum', sans-serif !important;
+}
+.contactsec
+{
+     font-family: 'Gowun Dodum', sans-serif !important;
+}
+.contactsec .row{
+    font-size:17px;
+}
+section-4 .container h1 {
+    font-size: 6vmin;
+    padding-top: 14vmin;
+
+  }
+  
+  .section-4 .team {
+    padding: 10vmin 4vmin;
+  }
+  
+  .section-4 .card {
+    width: 22em;
+    margin-top: 10vmin;
+  }
+  
+  .section-4 .card .card-text {
+    padding: 0.5em;
+  }
+  
+  .section-4 .card-body > a {
+    font-size: 1.5em;
+  }
+  
+  .section-4 .carousel-item {
+    padding-left: 3rem;
+  }
+  
+/*Section 1*/
+/********** section 1 **************/
+
+.section-1 {
+    padding: 10min 0vmin;
+    font-family: 'Gowun Dodum', sans-serif !important;
+    overflow: visible;
+  }
+  
+  .section-1 .row .col-md-6 .pray img {
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 0.2em;
+  }
+  
+  .section-1 .row .col-md-6:last-child {
+    position: relative;
+  }
+  
+  .section-1 .row .col-md-6 .panel {
+    position: absolute;
+    top: 7vmin;
+    left: -19vmin;
+    background: white;
+    border-radius: 3px;
+    text-align: left;
+    padding: 13vmin 5vmin 20vmin 10vmin;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
+    font-family: var(--Rubik);
+    z-index: 1;
+  }
+  
+  .section-1 .row .col-md-6 .panel h1 {
+    font-weight: bold;
+    padding: 0.4em 0;
+    font-size: 2em;
+  }
+  
+  .section-1 .row .col-md-6 .panel p {
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+/*Header Style */
+.headercontent
+{
+    margin-top: 60%;
+}
+.headercontent h2
+{
+    color:#000;font-size:45px;
+}
+.headercontent h5
+{
+    color:#000;font-size:30px;
+}
+.viewbtn
+{
+    margin-top:10%;
+    background-color: #A48462 !important;
+    font-family: 'Poiret One';
+    letter-spacing: 2px;
+}
+
+
+  .ourproduct
+  {
+      margin-top:30%;
+      font-family: 'Gowun Dodum', sans-serif !important;
+      font-size:20px!important;
+  }
+.productcontent p{
+    color: rgba(0, 0, 0, 0.5);
+    font-size:16px!important;
+}
+  .ourproduct1{
+    margin-top:5%;
+  }
+  .ourproduct2
+  {
+    margin-top:10%;
+  }
+  
+.headcen
+{
+    width: 80%;
+    margin-left: 10%;
+    font-family: 'Poiret One', cursive;
+}
+.caption
+{
+    font-family: 'Gowun Dodum', sans-serif !important;
+}
+.headermargin
+{
+  font-family: 'Raleway'; 
+}
+.imgsizeban
+{
+    width: 98%;margin-top:15%;height:75%;
+    border-radius : 15px;
+}
+.imgpad
+{
+    padding:0px !important;
+    margin: 0px !important;
+}
+.hovview:hover
+{
+    background-color: #ffbd11 !important;
+}
+.section-gallery
+{
+width:90%;
+margin-left:5%;
+}
+.gallery {
+    display: flex;
+    padding: 2px;
+    transition: 0.3s;
+}
+.gallery:hover .gallery__image {
+    filter: grayscale(1);
+}
+.gallery__column {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+.gallery__link {
+    margin: 2px;
+    overflow: hidden;
+}
+.gallery__link:hover .gallery__image {
+    filter: grayscale(0);
+}
+.gallery__link:hover .gallery__caption {
+    opacity: 1;
+}
+.gallery__thumb {
+    position: relative;
+}
+.gallery__image {
+    display: block;
+    width: 100%;
+    transition: 0.3s;
+}
+.gallery__image:hover {
+    transform: scale(1.1);
+}
+.gallery__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 25px 15px 15px;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    color: white;
+    opacity: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, 0) 100%);
+    transition: 0.3s;
+}
+
+
+/*************************/
+/* Tab Style */
+@media only screen and (max-width:768px) 
+{
+.close
+{
+margin-top:-160px;
+}
+.section-1 .row .col-md-6 .panel {
+    position: absolute;
+    top: 7vmin;
+    left: -19vmin;
+    background: white;
+    border-radius: 3px;
+    text-align: left;
+    padding: 9vmin 2vmin 12vmin 4vmin;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
+    font-family: var(--Rubik);
+    z-index: 1;
+  }
+.productcontent
+{
+   font-family : 'Gowun Dodum'
+}
+.productcontent h1
+{
+    font-size:4vmin !important
+}
+.productcontent p
+{
+    font-size:2.3vmin !important
+}
+
+.ourproduct
+{
+    margin-top:70%;
+}
+.headermargin
+{
+    margin-left:0px !important;
+    margin-top:15% !important;
+
+}
+.imgsizeban
+{
+    width: 98% !important;
+    margin-top:10% !important;
+    height:75% !important;
+}
+.headercontent
+{
+    margin-top:50% !important
+}   
+.headercontent h2
+{
+    font-size:30px;
+} 
+.headercontent h5
+{
+    color:#000;font-size:20px;
+}  
+.headcen
+{
+    width: 90%;
+    margin-left: 10% !important;
+    font-family: 'Poiret One';
+}
+.imgdesign
+{
+    width: 90% !important;
+    height: 300px !important;
+    margin-top: 14% !important;
+}
+.viewbtn
+{
+margin-left:0 !important;
+margin-top:0 !important;
+margin-top:5% !important;
+background-color: #A48462 !important;
+}
+.cardintab
+{
+    width: 100% !important;
+}
+
+}
+
+/*************************/
+/*Mobile Style */
+@media only screen and (max-width:400px) 
+{
+.close
+{
+margin-top:-160px;
+}
+.section-1 .row .col-md-6 .panel 
+{
+    top:0 !important;
+    left:0 !important
+}
+.productcontent
+{
+    margin-top:10% !important
+}
+.productcontent h1
+{
+    font-size:7vmin !important
+}
+.productcontent p
+{
+    font-size:5vmin !important
+}
+
+.ourproduct
+{
+    margin-top:200% !important;
+}
+.ourproduct1
+{
+      margin-top: 25% !important;
+}
+.headermargin
+{
+    margin-left:0px !important;
+    margin-top:15% !important;
+
+}
+.imgsizeban
+{
+    width: 98% !important;
+    margin-top:30% !important;
+    height:75% !important
+}
+
+.headercontent
+{
+    font-family: 'Poiret One';
+    margin-bottom: 35%;
+}
+.headcen
+{
+    width: 80%;
+    margin-left: 10%;
+    font-family: 'Poiret One';
+}
+
+.imgdesign
+{
+    width: 90% !important;
+    height: 300px !important;
+    margin-top: 14% !important;
+}
+.viewbtn
+{
+margin-left:0 !important;
+margin-top:0 !important;
+margin-top:5% !important;
+background-color: #A48462 !important;
+}
+}
+
+

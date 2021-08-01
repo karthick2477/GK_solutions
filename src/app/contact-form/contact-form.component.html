@@ -1,0 +1,45 @@
+<form [formGroup]="form" class="field" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="username">Name</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Address">Address</label>
+        <textarea type="text" formControlName="Address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Address.errors }"></textarea>
+        <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
+            <div *ngIf="f.Address.errors.required">Address is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Requirement">Requirement</label>
+        <textarea type="text" formControlName="Requirement" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Requirement.errors }"></textarea>
+        <div *ngIf="submitted && f.Requirement.errors" class="invalid-feedback">
+            <div *ngIf="f.Requirement.errors.required">Requirement is needed</div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="num">Mobile No</label>
+        <input type="text" formControlName="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.number.errors }" />
+        <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+            <div *ngIf="f.number.errors.required">Mobile No is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="hovview btn" style="background-color:#A48462;color:#fff">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Contact
+        </button>
+        <!-- <a routerLink="../register"  class="btn btn-link">Register</a> -->
+    </div>
+</form>

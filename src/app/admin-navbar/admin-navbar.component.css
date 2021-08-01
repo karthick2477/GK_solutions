@@ -1,0 +1,21 @@
+
+.hovview:hover
+{
+    background-color: #ffbd11 !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+.Design-nav
+{
+    background-color: #A48462 !important;
+    font-family: 'Gowun Dodum', sans-serif !important;
+}
+@media only screen and (max-width:400px) 
+{
+.close
+{
+margin-top:-408px;
+margin-right:-13px;
+}
+}

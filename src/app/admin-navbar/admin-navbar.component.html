@@ -1,0 +1,112 @@
+<nav class=" Design-nav navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" style="color:#fff">WELCOME karthi</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link js-scroll-trigger"><button class="hovview btn" style="background-color:#ffbd11;color:#fff;padding: 1px 12px;" (click)="openModal('custom-modal-1')">Add item</button></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger">Forgot Password</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" (click)="routeToLogin()" >Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <jw-modal id="custom-modal-1">
+
+
+    <div class="row">
+      <div class="col-md-6 mb-4 mb-md-0">
+  
+        <div id="mdb-lightbox-ui"></div>
+  
+        <div class="mdb-lightbox">
+  
+          <div class="row product-gallery mx-1">
+           
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              
+              <div *ngIf="showDrop"  class="form-group">
+              
+                  <select  class="form-control" formControlName="filterProduct" (ngModelChange)="changeWebsite($event)">
+                    <option disabled="true" [selected]="true">Choose Types</option>
+                    <option *ngFor="let k of DesignData1;"  >
+                      {{ k.name}}-{{ k.id.split('-')[0]}}
+                    </option>
+                  </select>
+                  <span *ngIf="showDrop"><a (click)="addNewDoor()">Add New Doortype?</a></span>
+                  
+              </div>
+              <div  *ngIf="!showDrop" class="form-group">
+                <label for="DoorName">Door Type</label>
+                <input type="text" (input)="checkDoortypes($event)" (change)="checkDoortypes($event)" formControlName="DoorName" class="form-control" />
+                <span *ngIf="!showDrop"><a (click)="backtodrop()">back?</a></span>
+                <div *ngIf="submitted && f.DoorName.errors" class="invalid-feedback">
+                    <div *ngIf="f.DoorName.errors.required">DoorName is required</div>
+                </div>
+                <div style="color:red" *ngIf="!validDoorType">Invalid Doorname</div>
+            </div>
+            <div *ngIf="!showDrop" class="form-group">
+              <label for="productInitial">Product Inital</label>
+              <input type="text" (input)="checkDoorInitial($event)" (change)="checkDoorInitial($event)" formControlName="productInitial" class="form-control" />
+              <div *ngIf="submitted && f.productInitial.errors" class="invalid-feedback">
+                  <div  *ngIf="f.productInitial.errors.required">productname is required</div>
+                  
+              </div>
+              <div style="color:red" *ngIf="!validDoorInitial">Invalid DoorIntial</div>
+          </div>
+            <!-- <div *ngIf="!showDrop" class="form-group">
+              <label for="productname">Product ID</label>
+              <input type="text" disabled="trueformControlName="productname" class="form-control" />
+              <div *ngIf="submitted && f.productname.errors" class="invalid-feedback">
+                  <div *ngIf="f.productname.errors.required">productname is required</div>
+              </div>
+          </div> -->
+              <div  class="form-group">
+                  <label for="productname">Product ID</label>
+                  <input type="text" disabled="true" formControlName="productname" class="form-control" />
+                  <!-- <div *ngIf="submitted && f.productname.errors" class="invalid-feedback">
+                      <div *ngIf="f.productname.errors.required">productname is required</div>
+                  </div> -->
+              </div>
+              <div class="form-group">
+                  <label for="Description">Description</label>
+                  <input type="textarea" formControlName="Description"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Description.errors }" />
+                  <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+                      <div *ngIf="f.Description.errors.required">Description is required</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="Image">Image</label>
+                  <input type="file" class="form-control" accept="image/jpeg,image.jpg,image/png" formControlName="Image" multiple  (change)="detectFiles($event)" [ngClass]="{ 'is-invalid': submitted && f.Image.errors }" />
+                 <!-- <img src="imgdata" style="width:200px"/> -->
+                  <div *ngIf="submitted && f.Image.errors" class="invalid-feedback">
+                      <div *ngIf="f.Image.errors.required">Image is required</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <button [disabled]="loading" (click)="uploadData()" class="hovview btn" style="background-color:#ffbd11;color:#fff">
+                      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Upload
+                  </button>
+              </div>
+          </form>     
+          </div>  
+        </div>
+      </div>
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-2"> <button  class="close" data-dismiss="modal" style="cursor:pointer;"(click)="closeModal('custom-modal-1');">X</button></div>
+    </div>   
+  </jw-modal>

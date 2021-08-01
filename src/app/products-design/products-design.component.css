@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+.index_caption{
+    width: auto;
+    max-width: 45%;
+    height: auto;
+    margin-bottom: 140px;
+    left: 5%;
+    top: 13%;
+    text-align: left;
+}
+section-4 .container h1 {
+    font-size: 6vmin;
+    padding-top: 14vmin;
+
+  }
+  
+  .section-4 .team {
+    padding: 10vmin 4vmin;
+  }
+  
+  .section-4 .card {
+    width:18em;
+    margin-top: 10vmin;
+  }
+  .product-tumbnail
+  {
+    background: #f0f0f0;
+  }
+  
+  .section-4 .card .card-text {
+    padding: 0.5em;
+  }
+  
+  .section-4 .card-body > a {
+    font-size: 1.5em;
+  }
+  
+  .section-4 .carousel-item {
+    padding-left: 3rem;
+  }
+/* .banner_text_left{
+width: 40%;
+border-left: 3px solid #ffbd11;
+position: absolute;
+padding-left: 5px;
+height: auto;
+top: 72%;
+} */
+@media only screen and (max-width:768px)
+{
+    .cardintab
+    {
+        width: 100% !important;
+    }
+    .section-4 .card 
+    {
+    width: 10em !important;
+    }
+  .card-text {
+    font-size: 18px !important;
+      }
+}
+
+
+ @media only screen and (max-width:400px) 
+{
+    .section-4 .card 
+    {
+        width: 17em !important;
+    }
+.close
+{
+margin-top:-160px;
+}
+.imgdesign
+{
+    width: 90% !important;
+    height: 260px !important;
+    margin-top: 14% !important;
+}
+.modelscount
+{
+    margin-left: 48px !important;
+}
+}
+/* .card
+{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+}
+}
+.card
+{
+    width: 380px;
+    position: relative;
+    box-shadow: 0 2px 7px #dfdfdf;
+    margin: 50px auto;
+    background: #fafafa;
+} */
+/* .hovview:hover
+{
+    background-color: #ffbd11 !important;
+}*/
+/* .imgsize
+{
+    margin-left:20px;
+    margin-top:10px;
+} */
+.cardhov :hover{
+    transform: scale(1.05);
+ }
+.modalsec
+{
+    font-family: 'Gowun Dodum', sans-serif !important; 
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+*
+{
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}  */
+
+
+body
+{
+    font-family: 'Roboto', sans-serif;
+}
+a
+{
+    text-decoration: none;
+}
+.product-card {
+    width: 300px;
+    position: relative;
+    box-shadow: 0 2px 7px #dfdfdf;
+    margin: 50px auto;
+    background: #fafafa;
+}
+.dropdown-menu1
+{
+     /* position: absolute;  */
+    /* top: 100%; */
+    /* left: 0; */
+    z-index: 1000;
+    margin-top:80px;
+     margin-left: 40px;
+    /* display: none; */
+    /* float: right; */
+    min-width: 10rem;
+    /* padding: .5rem 0; */
+    /* margin: .125rem 0 0; */
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: .25rem;
+}
+.dropdown-menu2
+{
+    z-index: 1000;
+    margin-top:200px;
+     margin-left: 40px;
+     min-width: 10rem;
+     font-size: 1rem;
+    color: #212529;
+    text-align: center;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: .25rem;
+}
+/* 
+.badge {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: red;
+    color: #fff;
+    padding: 3px 10px;
+}
+
+
+
+.product-tumb img {
+    max-width: 100%;
+    max-height: 100%;
+} */
+.product-tumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    padding: 50px;
+    background: #f0f0f0;
+}
+.product-details {
+    padding: 30px;
+}
+
+.product-catagory {
+    display: block;
+    font-size: 12px;
+    font-weight: 750;
+    text-transform: uppercase;
+    color: #ccc;
+    margin-bottom: 18px;
+}
+
+/* .product-details h4 a {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    color: #363636;
+    text-decoration: none;
+    transition: 0.3s;
+} */
+
+/* .product-details h4 a:hover {
+    color: #fbb72c;
+} */
+.designssec
+{
+width:90%;
+margin-left:5%;
+
+}
+.imgdesign
+{
+    height:550px;
+    width:90%;
+    margin-left:5%
+}
+.hovview:hover
+{
+    background-color: #A48462  !important;
+}
+
+.product-details p {
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 18px;
+    color: #999;
+}
+
+.product-bottom-details {
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.product-bottom-details div {
+    float: left;
+    width: 50%;
+}.img-magnifier-container {
+    position:relative;
+  }
+  
+  ::ng-deep .img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 100px;
+    height: 100px;
+  }
+  
+  * {box-sizing: border-box;}
+  .img-zoom-result {
+    /* border: 1px solid #d4d4d4; */
+    /*set the size of the result div:*/
+    width: 300px;
+    height: 300px;
+     /* position: absolute; uncomment if u want div to float on top of everything
+    top: -100%;
+    z-index: 199 !important;
+    display: table;
+    margin-left: 120px; */
+   
+  }

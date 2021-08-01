@@ -1,0 +1,130 @@
+<app-navbar></app-navbar>
+<section style="margin-top:10%;">
+
+    <div class="">
+      <img  class="d-block imgdesign" src="assets/imgs/Designpage.jpg" alt="First slide">
+    </div>
+  
+</section>
+<div class="dropdown-menu2 dropdown-menu-left" *ngIf="noData">
+  No data found...
+</div>
+<section class="designssec">
+<div *ngIf="!noData">
+
+  <div  class="dropdown-menu1 dropdown-menu-left" style="font-family:'Gowun Dodum', sans-serif !important;font-size:17px">
+    <form [formGroup]="myForm">
+      Door Types &nbsp;
+      <select  formControlName="filterProduct">
+        <option disabled="true" [selected]="true">Choose Types</option>
+        <option>All Doors</option>
+        <option  *ngFor="let k of DesignData1;" >
+          {{ k.name }}-{{ k.id.split("-")[0]}}
+        </option>
+      </select>&nbsp;&nbsp;
+      <b class="modelscount">{{Designdatas.length}} Models</b>
+    </form> 
+    
+  </div>
+  <section class="section-4">
+  <div class="team row ">
+  <div class="col-md-3 col-12 text-center"  *ngFor="let a of Designdatas;index as i;">
+    <div  (click)="openModal('custom-modal-2',a)" class=" card mr-2 d-inline-block shadow-lg">
+        <div class="cardintab card-img-top product-tumbnail">
+          <img  style="width:210px;height:200px" src="{{a.image}}"  class="img-fluid border-radius p-4" alt="">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title product-catagory">{{a.name}}</h3>
+          <h4 class="card-text">{{a.id}}</h4>
+          
+          
+        </div>
+        </div>
+      </div>
+</div>
+</section>
+
+</div>
+</section>
+<!-- <div class="row px-5 pt-5">
+    <div *ngFor="let a of DesignData;index as i;" class="col-md-4 mt-4 mt-sm-0 card-container">
+      <div class="card text-center product">
+        <img class="imgsize img-fluid  d-block mx-auto" src="{{a.image}}" alt="Pilot Aviator Glasses Gear Image">
+
+      <div class="product Details" style="padding: 20px;">
+            <h5 class="card-title font-weight-semi-bold mb-3 w-xl-220p mx-auto"></h5>
+          <p class="price">{{a.name}}</p>
+        </div>
+        
+          <button type="submit" class="btn btn-dark btn-lg " (click)="openModal('custom-modal-2',a)" name="add-button">View Details</button>
+        </p>
+      </div>
+    </div>
+    </div> -->
+
+
+<jw-modal id="custom-modal-2">
+
+
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+
+      <div id="mdb-lightbox-ui"></div>
+
+      <div class="mdb-lightbox">
+
+        <div class="row product-gallery mx-1">
+
+          <div class="col-12 mb-0 img-magnifier-container ">
+            <figure class=" view overlay rounded z-depth-1 main-img">
+              <!-- <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                data-size="710x823"> </a>-->
+                <img id="myimage"  style="width: 90%;" src="{{DescribeData.image}}" onmouseover="magnify()"
+                  class=" img-fluid z-depth-1"> 
+              
+            </figure>
+            
+          
+          </div>
+         
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-6 modalsec">
+    <div><button  class="close" data-dismiss="modal" style="cursor:pointer;"(click)="closeModal('custom-modal-2');">X</button></div>
+      <h5>More Details</h5>
+      <p class="mb-2 text-muted text-uppercase small">{{DescribeData.name}}</p>
+      <table class="table table-sm table-borderless mb-0">
+        <tbody>
+          <tr>
+            <th class="pl-0 w-25" scope="row"><strong>Description</strong></th>
+            <td>{{DescribeData.description}}</td>
+          </tr>
+    </tbody>
+    </table>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless mb-0">
+          <tbody>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+              <td>{{DescribeData.name}}</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Model No</strong></th>
+              <td>{{DescribeData.id}}</td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+      <a href="#contact"> <button type="button" style="background-color:#A48462;margin-top: 10px;" class="btn hovview btn btn-primary btn-lg">Estimate</button></a>
+    </div>
+  </div>
+
+</jw-modal>
+
+<app-footer>
+
+</app-footer>

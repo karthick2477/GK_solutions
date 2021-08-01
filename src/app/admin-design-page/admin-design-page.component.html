@@ -1,0 +1,97 @@
+<app-admin-navbar></app-admin-navbar>
+<div>
+
+    <div  class="dropdown-menu1 dropdown-menu-left" style="font-family:'Gowun Dodum', sans-serif !important;font-size:17px">
+      <form [formGroup]="myForm">
+        Door Types &nbsp;
+        <select  formControlName="filterProduct">
+          <option disabled="true" [selected]="true">Choose Types</option>
+          <option>All Doors</option>
+          <option *ngFor="let k of DesignData1;" >
+            {{ k.name }}-{{ k.id.split("-")[0]}}
+          </option>
+        </select>&nbsp;&nbsp;
+        <b class="modelscount">{{Designdatas.length}} Models</b>
+      </form> 
+    </div>
+  
+  <div  class="row" style="margin-top:10px">
+    <div *ngFor="let a of Designdatas;index as i;"class="col-md-3 mt-3
+     card-container">
+  <div  class="product-card">
+    <div class="product-tumb"  (click)="openModal('custom-modal-2',a)">
+      <img style="width: 200px;" src="{{a.image}}" alt="">
+    </div>
+    <div class="product-details">
+      <span class="product-catagory">{{a.name}}</span> 
+      <div  style="padding:20px;flex-direction: row;">
+      <h4 style="float: left;"><a>{{a.id}}</a></h4><span><button style="background-color:rgba(200,0,0,0.5);border-radius:10px;float: right;" (click)="deleteProductItem(a)">Delete</button></span>
+    </div>
+    </div>
+    <!-- <p class="btn" style="margin-left:-5px">
+    <button type="submit" style="margin-left:50px;margin-bottom: 20px;" class="btn btn-dark btn-lg  w-100" (click)="openModal('custom-modal-2',a)" name="add-button">View Details</button>
+    </p> -->
+  </div>
+  </div>
+  </div>
+  </div>  
+  <jw-modal id="custom-modal-2" *ngIf="showmodal">
+  
+  
+    <div class="row">
+      <div class="col-md-6 mb-4 mb-md-0">
+  
+        <div id="mdb-lightbox-ui"></div>
+  
+        <div class="mdb-lightbox">
+  
+          <div class="row product-gallery mx-1">
+  
+            <div class="col-12 mb-0">
+              <figure class="view overlay rounded z-depth-1 main-img">
+                <!-- <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                  data-size="710x823"> </a>-->
+                  <img style="width: 90%;" src="{{DescribeData.image}}"
+                    class="img-fluid z-depth-1">
+                
+              </figure>
+            
+            </div>
+           
+          </div>
+  
+        </div>
+  
+      </div>
+      <div class="col-md-6 modalsec">
+      <div><button  class="close" data-dismiss="modal" style="cursor:pointer;"(click)="closeModal('custom-modal-2');">X</button></div>
+        <h5>More Details</h5>
+        <p class="mb-2 text-muted text-uppercase small">{{DescribeData.name}}</p>
+        <form [formGroup]="myForm">
+        <textarea formControlName="textarea1" [attr.disabled]="enableDesc" class="text-area" cols = "50" rows ="10">{{DescribeData.description}</textarea>
+        </form>
+          <div>
+            <button *ngIf="!enablebutton" style="cursor:pointer;" (click)="updatedata()">Upload</button>
+          
+          <button *ngIf="enablebutton" style="cursor:pointer;" (click)="enableUpload()">Update</button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-sm table-borderless mb-0">
+            <tbody>
+              <tr>
+                <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+                <td>{{DescribeData.name}}</td>
+              </tr>
+              <tr>
+                <th class="pl-0 w-25" scope="row"><strong>Model No</strong></th>
+                <td>{{DescribeData.id}}</td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+        <!-- <a href="#contact"> <button type="button" class="btn btn-primary btn-lg">Estimate</button></a> -->
+      </div>
+    </div>
+      
+  </jw-modal>
