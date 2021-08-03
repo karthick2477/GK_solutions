@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { NgxImageCompressService } from 'ngx-image-compress';
 import { LoadDataApiService } from '../load-data-api.service';
 import { AuthService } from '../login/guards/auth.service';
 import { ModalService } from '../_modal';
@@ -155,4 +156,6 @@ this.onLoadData();
      
  
    }
+
+  
 }

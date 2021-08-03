@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminDesignPageComponent } from './admin-design-page/admin-design-page.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { AuthGuard } from './login/guards/Auth.guard'
-
+import {NgxImageCompressService} from 'ngx-image-compress';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +37,7 @@ import { AuthGuard } from './login/guards/Auth.guard'
     HttpClientModule,
     Ng4LoadingSpinnerModule.forRoot()
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,NgxImageCompressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

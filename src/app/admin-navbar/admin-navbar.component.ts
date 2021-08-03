@@ -8,6 +8,7 @@ import { LoadDataApiService } from '../load-data-api.service';
 import { ModalService } from '../_modal';
 import { environment } from 'src/environments/environment';
 import { merge } from 'rxjs';
+import { NgxImageCompressService } from 'ngx-image-compress';
 @Component({
   selector: 'app-admin-navbar',
   templateUrl: './admin-navbar.component.html',
@@ -37,10 +38,11 @@ export class AdminNavbarComponent implements OnInit {
   validDoorType:boolean=true;
   validDoorInitial:boolean=true;
   urls = new Array<string>();
+  imgResultAfterCompress:string;
   submitted = false;
   prodID=[];
   prodId1:any=[];
-  constructor(private route:ActivatedRoute,private http:HttpClient, private formBuilder: FormBuilder,private designser:LoadDataApiService,private spinnerService: Ng4LoadingSpinnerService,private modalService: ModalService,private router:Router) { }
+  constructor(private route:ActivatedRoute,private http:HttpClient, private imageCompress: NgxImageCompressService,private formBuilder: FormBuilder,private designser:LoadDataApiService,private spinnerService: Ng4LoadingSpinnerService,private modalService: ModalService,private router:Router) { }
 
   ngOnInit() {
    this.onLoadData();
@@ -137,54 +139,118 @@ export class AdminNavbarComponent implements OnInit {
       this.loading = true;
     
     }
-    changeFile(file) {
-    //  console.log(file)
-      return  new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = () => resolve(reader.result.toString().split('data:image/jpeg;base64,')[1]);
-          reader.onerror = error => reject(error);
-      });
-  }
+  //   changeFile(file) {
+  //   //  console.log(file)
+  //     return  new Promise((resolve, reject) => {
+  //         const reader = new FileReader();
+  //         reader.readAsDataURL(file);
+  //         console.log(file)
+  //         if(file.type === "image/png")
+  //         {
+  //           reader.onload = () => resolve(reader.result.toString().split('data:image/png;base64,')[1]);
+  //         }
+  //         else
+  //         reader.onload = () => resolve(reader.result.toString().split('data:image/jpeg;base64,')[1]);
+  //         reader.onerror = error => reject(error);
+  //     });
+  // }
   
-  b64toBlob(b64Data, contentType, sliceSize) {
-    contentType = contentType || '';
-    sliceSize = sliceSize || 512;
+  async  reduce_image_file_size(base64Str, MAX_WIDTH = 450, MAX_HEIGHT = 450) {
+    let resized_base64 = await new Promise((resolve) => {
+        let img = new Image()
+        img.src = base64Str
+        img.onload = () => {
+            let canvas = document.createElement('canvas')
+            let width = img.width
+            let height = img.height
 
-    var byteCharacters = btoa(b64Data);
-    var byteArrays = [];
-
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-        var byteNumbers = new Array(slice.length);
-        for (var i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
+            if (width > height) {
+                if (width > MAX_WIDTH) {
+                    height *= MAX_WIDTH / width
+                    width = MAX_WIDTH
+                }
+            } else {
+                if (height > MAX_HEIGHT) {
+                    width *= MAX_HEIGHT / height
+                    height = MAX_HEIGHT
+                }
+            }
+            canvas.width = width
+            canvas.height = height
+            let ctx = canvas.getContext('2d')
+            ctx.drawImage(img, 0, 0, width, height)
+            resolve(canvas.toDataURL()) // this will return base64 image results after resize
         }
+    });
+    return resized_base64;
+}
 
-        var byteArray = new Uint8Array(byteNumbers);
 
-        byteArrays.push(byteArray);
-    }
+async  image_to_base64(file) {
+    let result_base64 = await new Promise((resolve) => {
+        let fileReader = new FileReader();
+        console.log(file)
+        fileReader.onload = (e) => resolve(fileReader.result);
+        fileReader.onerror = (error) => {
+            console.log(error)
+            alert('An Error occurred please try again, File might be corrupt');
+        };
+        fileReader.readAsDataURL(file);
+    });
+    return result_base64;
+}
 
-  var blob = new Blob(byteArrays, {type: contentType});
-  return blob;
-  }
-  async  detectFiles(event) {
-
-        if (event.target.value) {
-            const files = event.target.files;
-           for(let i=0;i<files.length;i++)
-         await   this.changeFile(files[i]).then((base64: string): any => {
-                console.log(base64)
-                this.imgdata.push(base64);
-               // this.imgdata.push(this.b64toBlob([base64], Blob,""));
-              //  console.log(this.imgdata)
-              
-            });
-        } 
+async process_image(e) {
+  this.imgdata=[];
+  if (e.target.value) 
+  {
+ const files = e.target.files; 
+  for(let i=0;i<files.length;i++)
+  {
+    const res = await this.image_to_base64(files[i]);
+    if (res) {
+        const old_size =await this. calc_image_size(res);
         
+            const resized = await this.reduce_image_file_size(res);
+            const new_size =await  this.calc_image_size(resized)
+            console.log('new_size=> ', new_size, 'KB');
+            console.log('old_size=> ', old_size, 'KB');
+           this.imgdata.push(resized.toString().split("data:image/png;base64,")[1])
+           console.log(this.imgdata)
+        
+    } else {
+        console.log('return err')
+        return null;
     }
+  }
+}
+}
+
+ calc_image_size(image) {
+    let y = 1;
+    if (image.endsWith('==')) {
+        y = 2
+    }
+    const x_size = (image.length * (3 / 4)) - y
+          return Math.round(x_size / 1024)
+  }
+
+  // async  detectFiles(event) {
+
+  //       if (event.target.value) {
+  //           const files = event.target.files;
+  //          for(let i=0;i<files.length;i++)
+  //        await   this.changeFile(files[i]).then((base64: string): any => {
+  //              // console.log(base64)
+  //               console.log(this.compressFile(base64));
+  //              // this.imgdata.push(this.compressFile(base64));
+  //              // this.imgdata.push(this.b64toBlob([base64], Blob,""));
+  //             //  console.log(this.imgdata)
+              
+  //           });
+  //       } 
+        
+  //   }
     changeWebsite(e:any)
     {
 
@@ -230,6 +296,7 @@ export class AdminNavbarComponent implements OnInit {
       //   if (this.form.invalid) {
       //     return;
       // }
+     
 console.log(this.imgdata.length)
       this.loading = true;
         this.spinnerService.show();
@@ -290,6 +357,8 @@ console.log(this.imgdata.length)
          name:this.form.controls.filterProduct.value.split("-")[0]
       }
     }
+
+    
     this.multipleApicall(body);
      // bodyArr.push(body);
        let num = parseInt(body["id"].split('-')[1]);
@@ -308,20 +377,22 @@ console.log(this.imgdata.length)
      alert("added successfully")
      //location.reload();
  // this.addAllproducts(bodyArr)
-    this.reloadPage();   }
+    //this.reloadPage(); 
+    }
 
       }
-  async multipleApicall(body)
+   multipleApicall(body)
    {
          
-  await this.designser.uploadData(body).subscribe((data) => {
-
-    //this.spinnerService.hide();
-    console.log(data);
-    
-
-  }); 
-
+ 
+  const promise = this.designser.uploadData(body).toPromise();
+  console.log(promise);  
+  promise.then((data)=>{
+    // this.Movie = JSON.stringify(data)
+    console.log(JSON.stringify(data));
+  }).catch((error)=>{
+   // console.log("Promise rejected with " + JSON.stringify(error));
+  });
 
    }
       addNewDoor()
@@ -382,11 +453,4 @@ this.form.get("productname").setValue("");
          
       }
 }
-// function observableFrom(bodyArr: any[]) {
-//   throw new Error('Function not implemented.');
-// }
-
-// function concatMap(arg0: (entry: any) => any): any {
-//   throw new Error('Function not implemented.');
-// }
 
