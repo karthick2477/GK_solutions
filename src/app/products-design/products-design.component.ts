@@ -18,7 +18,6 @@ export class ProductsDesignComponent implements OnInit {
  showdrop:boolean;
  DesignData1:any=[];
  Designdatas:any;
-
  myForm: FormGroup= this.fb.group({
   filterProduct: ['']
 })

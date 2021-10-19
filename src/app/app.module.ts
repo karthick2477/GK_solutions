@@ -11,10 +11,6 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import { LoginComponent } from './login/login.component';
-import { AdminDesignPageComponent } from './admin-design-page/admin-design-page.component';
-import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
-import { AuthGuard } from './login/guards/Auth.guard'
 import {NgxImageCompressService} from 'ngx-image-compress';
 @NgModule({
   declarations: [
@@ -24,20 +20,18 @@ import {NgxImageCompressService} from 'ngx-image-compress';
     NavbarComponent,
     FooterComponent,
     ContactFormComponent,
-    LoginComponent,
-    AdminDesignPageComponent,
-    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ModalModule,
     FormsModule,
+  
     ReactiveFormsModule,
     HttpClientModule,
     Ng4LoadingSpinnerModule.forRoot()
   ],
-  providers: [AuthGuard,NgxImageCompressService],
+  providers: [NgxImageCompressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
